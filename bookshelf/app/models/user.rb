@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   # creating a user by admin
-  def self.from_admin(params)
+  def self.create_user(params)
     user = User.new(email:  params['user']['email'],
                     firstname: params['user']['firstname'],
                     lastname: params['user']['lastname'],

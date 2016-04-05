@@ -13,4 +13,3 @@ A book sharing aplication developed in ROR
 5. Start the rail server
    rails s 
 6. Navigate localhost:3000 in your browser and you are done :)
-

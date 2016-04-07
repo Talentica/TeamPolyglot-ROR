@@ -7,6 +7,7 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/*'
+    - 'test/*'
     - !ruby/regexp /old_and_unused\.rb$/
   TargetRubyVersion: 2.2
 
@@ -21,9 +22,16 @@ Metrics/AbcSize:
 
 Style/DotPosition:
   EnforcedStyle: leading
+
 Encoding:
   Enabled: false
+
 LineLength:
   Max: 90
+
 Documentation:
   Enabled: false
+
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

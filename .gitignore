@@ -11,6 +11,3 @@ bookshelf/.bundle
 bookshelf/log/*
 bookshelf/!/log/.keep
 bookshelf/tmp
-
-# Ignore schema file
-bookshelf/db/schema.rb

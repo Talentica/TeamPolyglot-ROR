@@ -1,13 +1,13 @@
 AllCops:
   Include:
-    - '**/Rakefile'
-    - '**/config.ru'
+    - 'bookshelf/**/Rakefile'
+    - 'bookshelf/**/config.ru'
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'bin/*'
-    - 'test/*'
+    - 'bookshelf/db/**/*'
+    - 'bookshelf/config/**/*'
+    - 'bookshelf/script/**/*'
+    - 'bookshelf/bin/*'
+    - 'bookshelf/test/*'
     - !ruby/regexp /old_and_unused\.rb$/
   TargetRubyVersion: 2.2
 

@@ -13,7 +13,7 @@ require "bcrypt"
 # GNU General Public License for more details.
 class User < ActiveRecord::Base
   include BCrypt
-  extend MyModules::OaouthImage
+  # extend MyModules::OaouthImage
   has_many :authentications,
            class_name: "UserAuthentication", dependent: :destroy
   # Include default devise modules. Others available are:
@@ -31,12 +31,13 @@ class User < ActiveRecord::Base
                     url: "/system/:class/:id/:style/:basename.:extension",
                     default_url: "/images/no-image.png"
 
-  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\Z}
+  validates_attachment_content_type :avatar,
+                                    content_type: %r{\Aimage\/.*\Z},
+                                    if: :avatar_present?
 
   # before_save :extract_dimensions
-  scope :listingUser, -> (param) { where("firstname LIKE ?", "#{param}%") }
-
-  scope :email_validator, -> (param) { where("email = ?", param) }
+  scope :has_firstname_as, -> (param) { where("firstname LIKE ?", "#{param}%") }
+  scope :has_email_as, -> (param) { where("email = ?", param) }
 
   def self.create_from_omniauth(params)
     fname, lname = split_names params
@@ -103,6 +104,10 @@ class User < ActiveRecord::Base
 
   def update_roles(roles)
     Role.assignment_roles(self, roles) if roles.present?
+  end
+
+  def avatar_present?
+    avatar.present?
   end
 
   private

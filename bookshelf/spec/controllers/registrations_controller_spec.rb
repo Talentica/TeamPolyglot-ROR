@@ -10,4 +10,13 @@ describe RegistrationsController do
       expect(response).to have_http_status(200)
     end
   end
+
+  it "check user email availability during signup" do
+    expected = false
+    @user = FactoryGirl.attributes_for(:user)
+    post :create, user: @user
+    post :check_email_availabilty, email: @user[:email], format: :json
+    result = JSON.parse(response.body)
+    expect(result["available"]).to eq(expected)
+  end
 end

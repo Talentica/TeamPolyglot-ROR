@@ -14,15 +14,21 @@ class RegistrationsController < Devise::RegistrationsController
   # registration of new user by overriding native devise
   before_filter :authenticate_user!
 
-  def email_availabilty
+  def check_email_availabilty
     @user = User.has_email_as params["email"]
-    @response = if @user
-                  "Email already exist"
+    @response = if @user.present?
+                  {
+                    available:   false,
+                    message: "The Email id is already taken"
+                  }
                 else
-                  "Email doesn't exist with us"
+                  {
+                    available: true,
+                    message: "The Email id is not with us"
+                  }
                 end
     respond_to do |format|
-      format.json { render json: @response }
+      format.json { render json: @response.to_json }
     end
   end
 

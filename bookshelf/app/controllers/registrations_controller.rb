@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :authenticate_user!
 
   def user_email
-    @response = User.email_validator params['email']
+    @response = User.email_validator params["email"]
     respond_to do |format|
       format.json { render json: @response }
     end

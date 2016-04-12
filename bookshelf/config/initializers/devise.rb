@@ -1,18 +1,20 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # rubocop:disable Metrics/LineLength
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '73ee834c40ef8cd44301c30d409d8edf0ae54965d1b70f2688c9f9b749518204c385041d326152dbfc5879726f28ccf4a99b0b49bb48edc1b63a875840e53c47'
+  # rubocop:enable Metrics/LineLength
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -21,7 +23,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -98,8 +100,10 @@ Devise.setup do |config|
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 10
 
+  # rubocop:disable Metrics/LineLength
   # Setup a pepper to generate the encrypted password.
   # config.pepper = 'c75053bef106c57b727c712ef81fd838008036b29f84a6da08ded49c3fa3977292e3ef6093d2757cd77c10b01a4b1be3bc92e280f1449fe0ebb728f015d3a758'
+  # rubocop:enable Metrics/LineLength
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false

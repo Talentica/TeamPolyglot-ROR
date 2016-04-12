@@ -28,7 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
                   }
                 end
     respond_to do |format|
-      format.json { render json: @response.to_json }
+      format.json { render json: @response }
     end
   end
 

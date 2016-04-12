@@ -11,12 +11,19 @@ describe RegistrationsController do
     end
   end
 
-  it "check user email availability during signup" do
-    expected = false
-    @user = FactoryGirl.attributes_for(:user)
-    post :create, user: @user
-    post :check_email_availabilty, email: @user[:email], format: :json
-    result = JSON.parse(response.body)
-    expect(result["available"]).to eq(expected)
+  describe "#check_email_availability" do
+    let(:existing_user) { create(:user) }
+    let(:new_user) { build(:user) }
+    let(:available) { JSON.parse(response.body)["available"] }
+
+    it "checks existing emails correctly" do
+      post :check_email_availability, email: existing_user.email, format: :json
+      expect(available).to be(false)
+    end
+
+    it "checks new emails correctly" do
+      post :check_email_availability, email: new_user.email, format: :json
+      expect(available).to be(true)
+    end
   end
 end

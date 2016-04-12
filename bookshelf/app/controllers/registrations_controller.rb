@@ -14,12 +14,12 @@ class RegistrationsController < Devise::RegistrationsController
   # registration of new user by overriding native devise
   before_filter :authenticate_user!
 
-  def check_email_availabilty
-    @user = User.has_email_as params["email"]
+  def check_email_availability
+    @user = User.has_email_as(params["email"])
     @response = if @user.present?
                   {
                     available:   false,
-                    message: "The Email id is already taken"
+                    message: "The Email id is already registered"
                   }
                 else
                   {

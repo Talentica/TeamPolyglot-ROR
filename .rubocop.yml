@@ -4,7 +4,6 @@ AllCops:
     - 'bookshelf/**/config.ru'
   Exclude:
     - 'bookshelf/db/**/*'
-    - 'bookshelf/config/**/*'
     - 'bookshelf/script/**/*'
     - 'bookshelf/bin/*'
     - 'bookshelf/test/*'

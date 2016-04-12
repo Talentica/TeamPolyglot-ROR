@@ -7,8 +7,7 @@ describe RegistrationsController do
   describe "GET #new" do
     it "responds successfully with an HTTP 200 status code" do
       get :new
-      # response.should be_successful
-      expect(200)
+      expect(response).to have_http_status(200)
     end
   end
 end

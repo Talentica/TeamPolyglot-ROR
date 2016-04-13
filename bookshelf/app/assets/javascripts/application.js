@@ -57,10 +57,10 @@
 */
     function CheckAvailabilityOfEmail(){
       if (validateEmail()){
-        user_email = $( "#user_email" ).val()
-        $.post( "check_availability/email", { email: user_email },function(data){
+        UserEmail = $( "#user_email" ).val()
+        $.post( "check_availability/email", { email: UserEmail },function(data){
           if (!data.available){
-             if ($("#email-validation").length == 0){
+             if ($("#email-validation").length === 0){
                node = "<span class = 'email-validation' id = 'email-validation'> "+data.message+" </span>"
                $("#user_email").after(node);
              }

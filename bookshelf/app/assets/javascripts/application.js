@@ -14,18 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //=require_tree .
-/*
+
   function RemoveUser(id){
-    var confirmation = confirm('Are You sure to delete this member ?')
+    var confirmation = confirm("Are You sure to delete this member ?")
       if (confirmation){
         $.ajax({
-          type: 'post',
-          url: '/check/to_delete_id',
+          type: "post",
+          url: "/check/to_delete_id",
           data: { key: id },
           success: function(data){
-            $('#'+id).remove();
-            console.log('#usere'+id)
-            $('#usere-'+id).remove();
+            $("#"+id).remove();
+            $("#usere-"+id).remove();
           }
         });
       }
@@ -33,28 +32,28 @@
 
 
   function ForaAotucompleteFiled(availableTags){
-    $('#data-set').html('');
+    $("#data-set").html('');
       $(function(){
-        $('#role_userole').autocomplete({
+        $("#role_userole").autocomplete({
         source: availableTags,
         })
-        .autocomplete('instance')
+        .autocomplete("instance")
         ._renderItem = function( ul, item ){
-          return $('<div>')
-          .append( "<input type='checkbox' name= users[] value = " + item.id + '>' +
-          item.firstname + item.lastname + '(' + item.email + ')' + '</input>')
-          .appendTo( '#data-set' );
+          return $("<div>")
+          .append( "<input type='checkbox' name= users[] value = " + item.id + ">" +
+          item.firstname + item.lastname + "(" + item.email + ")" + "</input>")
+          .appendTo("#data-set");
         };
       });
   }
 
   function EditUser(){
-    $('.usero').hide();
-    $('.usere').show();
-    $('#update-usr').show();
-    $('#userebuton').hide();
+    $(".usero").hide();
+    $(".usere").show();
+    $("#update-usr").show();
+    $("#userebuton").hide();
   }
-*/
+
     function CheckAvailabilityOfEmail(){
       if (validateEmail()){
         UserEmail = $( "#user_email" ).val()
@@ -85,21 +84,23 @@
       }
   }
 
-/*  $( document ).on('page:change',(function() {
+  $( document ).on("page:change",(function() {
     $("#change-picture").click(function() {
      $("#update_pic").show()
     });
   }));
 
   function AjaxUpdateImage(url,id) {
-      var dataToSend = new FormData($('#'+id)[0]);
-      var image = dataToSend.get('user[avatar]')
+      var dataToSend = new FormData($("#"+id)[0]);
+      var image = dataToSend.get("user[avatar]");
       $.ajax({
            type: "POST",
            url: url,
            processData: false, // Don't process the files
-           contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-           data: dataToSend, // serializes the form's elements.
+           contentType: false, // Set content type to false as
+                               // jQuery will tell the server 
+                               // its a query string request.
+           data: dataToSend,   // serializes the form's elements.
            success: function(data){
                DisplayImage(image)
            },
@@ -113,13 +114,13 @@
   function DisplayImage(input) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $('#dis-img')
-        .attr('src', e.target.result)
+        $("#dis-img")
+        .attr("src", e.target.result)
         .width(225)
         .height(300);
       };
       reader.readAsDataURL(input);
   }
-*/
+
   //$(document).on('page:change', function() { alert ('hiee world') })
 

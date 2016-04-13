@@ -15,21 +15,20 @@
 //= require turbolinks
 //=require_tree .
 
-  function RemoveUser(id){
-    var confirmation = confirm("Are You sure to delete this member ?")
-      if (confirmation){
-        $.ajax({
-          type: "post",
-          url: "/check/to_delete_id",
-          data: { key: id },
-          success: function(data){
-            $("#"+id).remove();
-            $("#usere-"+id).remove();
-          }
-        });
-      }
+  function RemoveUser(id) {
+    var confirmation = confirm("Are You sure to delete this member ?");
+    if (confirmation) {
+      $.ajax({
+        type: "post",
+        url: "/check/to_delete_id",
+        data: {key: id},
+        success: function () {
+          $("#" + id).remove();
+          $("#usere-" + id).remove();
+        }
+      });
+    }
   }
-
 
   function ForaAotucompleteFiled(availableTags){
     $("#data-set").html('');

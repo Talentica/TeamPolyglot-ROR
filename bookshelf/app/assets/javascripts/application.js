@@ -74,10 +74,10 @@
     }
 
   function validateEmail(){
-    var x = $("#user_email").val();
-    var atpos = x.indexOf("@");
-    var dotpos = x.lastIndexOf(".");
-      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+    var UserEmail = $("#user_email").val();
+    var atpos = UserEmail.indexOf("@");
+    var dotpos = UserEmail.lastIndexOf(".");
+      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=UserEmail.length) {
         return false;
       }
       else {
@@ -101,7 +101,7 @@
            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
            data: dataToSend, // serializes the form's elements.
            success: function(data){
-               display_image(image)
+               DisplayImage(image)
            },
            error: function (data)
            {
@@ -110,7 +110,7 @@
       })
   }
 
-  function display_image(input) {
+  function DisplayImage(input) {
       var reader = new FileReader();
       reader.onload = function (e) {
         $('#dis-img')

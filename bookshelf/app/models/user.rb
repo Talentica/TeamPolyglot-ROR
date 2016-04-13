@@ -18,13 +18,13 @@ class User < ActiveRecord::Base
            class_name: "UserAuthentication", dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers:  [:google_oauth2, :facebook]
   has_one :profile, dependent: :destroy
   has_many :posts,  dependent: :destroy
   has_many :roles
-  after_create :set_profile
+  # after_create :set_profile
   has_attached_file :avatar,
                     styles: { medium: "300x300>", thumb: "50x50>" },
                     path: "public/system/:class/:id/:style/:filename",

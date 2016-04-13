@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
+  # adding custom urls in devise controller
+  devise_scope :user do
+    post "/users/check_availability/email", to:  "registrations#check_email_availability"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

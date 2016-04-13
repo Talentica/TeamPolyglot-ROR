@@ -60,21 +60,21 @@
         user_email = $( "#user_email" ).val()
         $.post( "check_availability/email", { email: user_email },function(data){
           if (!data.available){
-             if ($('#email-validation').length == 0){
+             if ($("#email-validation").length == 0){
                node = "<span class = 'email-validation' id = 'email-validation'> "+data.message+" </span>"
-               $('#user_email').after(node);
+               $("#user_email").after(node);
              }
              return false
           }
           else{
-            $('#email-validation').remove()
+            $("#email-validation").remove()
           }
         });
       }
     }
 
   function validateEmail(){
-    var x = $('#user_email').val();
+    var x = $("#user_email").val();
     var atpos = x.indexOf("@");
     var dotpos = x.lastIndexOf(".");
       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {

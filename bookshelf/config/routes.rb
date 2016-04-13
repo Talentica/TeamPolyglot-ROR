@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   # adding custom urls in devise controller
   devise_scope :user do
+    authenticated :user do
+      # root to: 'books#index', as: :authenticated_root
+    end
+    unauthenticated :user do
+      root to:  "devise/registrations#new", as: :unauthenticated_root
+    end
     post "/users/check_availability/email", to:  "registrations#check_email_availability"
   end
 

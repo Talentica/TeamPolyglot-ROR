@@ -40,21 +40,19 @@ class User < ActiveRecord::Base
   scope :has_email_as, -> (param) { where("email = ?", param) }
 
   def self.create_from_omniauth(params)
-    fname, lname = split_names params
+    # fname, lname = split_names params
     @user = User.new(email:  params["info"]["email"],
-                     firstname: fname,
-                     lastname: lname,
-                     avatar_file_name: "img.jpg",
-                     password: params["info"]["email"],
-                     confirmed_at: Time.now)
+                     password: params["info"]["email"]
+                    )
     # don't send email to the user while signup with externa devise
-    @user.skip_confirmation!
-    @user.save
-    user_oaouth_image params.info.image, @user if params.info.image
-    @user.confirm!
-    @user
+    # @user.skip_confirmation!
+    # @user.save
+    # user_oaouth_image params.info.image, @user if params.info.image
+    # @user.confirm!
+    # @user
   end
 
+  # for later use overriding devise model
   def self.split_names(param)
     if param["provider"] == "facebook"
       param["info"]["name"].split(" ", 2)

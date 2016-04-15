@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { omniauth_callbacks:
+                                   "users/omniauth_callbacks",
+                                    registrations: "registrations" }
   # adding custom urls in devise controller
   devise_scope :user do
     post "/users/check_availability/email", to:  "registrations#check_email_availability"

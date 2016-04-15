@@ -20,12 +20,14 @@ require "devise"
 #
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
-#
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.infer_spec_type_from_file_location!
   config.include Devise::TestHelpers, type: :controller
+  config.include(OmniauthMacros)
+  OmniAuth.config.test_mode = true
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -48,7 +50,7 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
+  # config.include Capybara::DSL
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
   # =begin

@@ -11,7 +11,7 @@ describe Users::OmniauthCallbacksController do
     request.env["omniauth.auth"] = mock_auth_hash_fb
     get :facebook
     expect(user_has_authentication.where("authentication_provider_id=1"))
-      .should_not be_nil
+      .to_not be_nil
     expect(created_user.email).to eq(suppose_to_created)
   end
 

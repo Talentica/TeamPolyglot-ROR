@@ -14,4 +14,3 @@ class CreateUserAuthentications < ActiveRecord::Migration
     add_index "user_authentications", ["user_id"], :name => "index_user_authentications_on_user_id"
   end
 end
-

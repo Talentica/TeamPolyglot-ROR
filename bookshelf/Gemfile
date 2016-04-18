@@ -13,6 +13,7 @@ gem 'remotipart', '~> 1.2'
 # login via facebook
 gem 'omniauth-facebook'
 
+gem 'capybara'
 # login via google
 gem 'omniauth-google-oauth2'
 
@@ -66,6 +67,7 @@ group :development, :test do
   gem 'rspec-support'
 
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do
